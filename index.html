@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        df-messenger {
+            --df-messenger-bot-message: #d9d9dad8;
+            --df-messenger-button-titlebar-color: #df9b56;
+            --df-messenger-chat-background-color: #f3f6fc;
+            --df-messenger-font-color: #000;
+            --df-messenger-font-family: "Google Sans";
+            --df-messenger-message-user-background: #d3e3fd;
+            --df-messenger-message-bot-background: #fff;
+            --df-messenger-send-icon: #878fac;
+            --df-messenger-user-message: #91b3e2;
+        }
+        df-messenger-chat-bubble {
+            --df-messenger-chat-bubble-color: #df9b56; /* Chat bubble color */
+            --df-messenger-chat-bubble-text-color: #000; /* Chat bubble text color */
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <iframe
+    allow="microphone;"
+    width="700"
+    height="550"
+    src="https://console.dialogflow.com/api-client/demo/embedded/a21d644c-7b13-4be4-b8ba-f3880a95aa6e">
+</iframe> -->
+
+    <df-messenger
+    intent="WELCOME"
+    chat-title="🤖    Mentor Mind"
+    agent-id="a21d644c-7b13-4be4-b8ba-f3880a95aa6e"
+    language-code="en"
+    >
+    <df-messenger-chat-bubble
+        chat-title="Mentor Mind..">
+    </df-messenger-chat-bubble>
+    </df-messenger>
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<!-- Jquery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    //To minimise the height of chatbox
+    $(document).ready(function() {
+        window.addEventListener('dfMessengerLoaded', function (event) {
+        $r1 = document.querySelector("df-messenger");
+        $r2 = $r1.shadowRoot.querySelector("df-messenger-chat");
+        $r3 = $r2.shadowRoot.querySelector("df-messenger-user-input"); //for other mods
+        var sheet = new CSSStyleSheet;
+        // manage box height from here
+        sheet.replaceSync( `div.chat-wrapper[opened="true"] { height: 470px }`);
+        $r2.shadowRoot.adoptedStyleSheets = [ sheet ];
+        });
+    });
+</script>
+</body>
+</html>

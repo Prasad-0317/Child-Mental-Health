@@ -1,0 +1,6 @@
+[server]
+runOnSave = true
+enableStaticServing = false
+
+[browser]
+showSidebarNavigation = false

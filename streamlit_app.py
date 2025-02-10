@@ -103,6 +103,13 @@ st.markdown(container_style, unsafe_allow_html=True)
 # st.header("Quotes for Child Mental Health")
 
 # List of quotes
+# Quotes Data
+import streamlit as st
+import time
+
+
+
+# Quotes Data
 quotes = [
     {
         "text": "🌞 Children's mental health is just as important as their physical health and deserves the same quality of support. 🌱",
@@ -121,55 +128,48 @@ quotes = [
     }
 ]
 
-# Initialize session state for quote index
-if 'quote_index' not in st.session_state:
+# Initialize session state
+if "quote_index" not in st.session_state:
     st.session_state.quote_index = 0
 
-# Function to update quote index
-def update_quote_index(delta):
-    st.session_state.quote_index = (st.session_state.quote_index + delta) % len(quotes)
+if "last_quote_time" not in st.session_state:
+    st.session_state.last_quote_time = time.time()
 
-# Display quote with navigation buttons
+# Display Quote
 quote = quotes[st.session_state.quote_index]
+
 st.markdown(
     f"""
-    <div class="quote-container">
-        <div class="quote-text" style="color:{quote['color']};">{quote['text']}</div>
-        <div class="quote-author">- {quote['author']}</div>
-        <div class="quote-navigation">
-            <button onclick="updateQuote(-1)">❮</button>
-            <button onclick="updateQuote(1)">❯</button>
-        </div>
+    <div style="border-radius: 10px; padding: 20px; background-color: #f8f9fa; text-align: center;">
+        <p style="color:{quote['color']}; font-size: 25px; font-weight: bold;">{quote['text']}</p>
+        <p style="font-size: 16px; font-weight: bold; color: #555;font-size:25px"><i>— {quote['author']}</i></p>
     </div>
     """,
-    unsafe_allow_html=True,
+    unsafe_allow_html=True
 )
 
-# JavaScript for quote navigation
-st.markdown(
-    """
-    <script>
-        function updateQuote(delta) {
-            fetch(/update_quote?delta=${delta}, { method: 'GET' })
-                .then(() => window.location.reload());
-        }
-    </script>
-    """,
-    unsafe_allow_html=True,
-)
+# Navigation Buttons
+col1, col2, col3 = st.columns([1, 1, 1])
 
-# Streamlit endpoint to update quote index
-if st.experimental_get_query_params().get("delta"):
-    delta = int(st.experimental_get_query_params()["delta"][0])
-    update_quote_index(delta)
+with col2:
+    if st.button("❮ Previous"):
+        st.session_state.quote_index = (st.session_state.quote_index - 1) % len(quotes)
+        st.session_state.last_quote_time = time.time()
+        st.rerun()
 
-# Automatically change quotes every 5 seconds
-if "last_quote_change" not in st.session_state:
-    st.session_state.last_quote_change = time.time()
+with col3:
+    if st.button("Next ❯"):
+        st.session_state.quote_index = (st.session_state.quote_index + 1) % len(quotes)
+        st.session_state.last_quote_time = time.time()
+        st.rerun()
 
-if time.time() - st.session_state.last_quote_change > 5:  # Change quote every 5 seconds
-    update_quote_index(1)
-    st.session_state.last_quote_change = time.time()
+# **Auto-switch quote every 5 seconds**
+if time.time() - st.session_state.last_quote_time >= 5:
+    st.session_state.quote_index = (st.session_state.quote_index + 1) % len(quotes)
+    st.session_state.last_quote_time = time.time()
+    st.rerun()
+
+
 
 # -------------
 
@@ -322,16 +322,18 @@ function showSlides() {
 
 # -----------
 
-
-
-# Footer with contact info
 st.markdown(
     """
     <style>
     .footer {
-            # position:fixed;
-            margin-top: 40px;
-            padding: 20px;
+            position:fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height:5%;
+            background-color: #000;
+            color: white;
+            text-align: center;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
             text-align: center;
             font-size: 16px;
@@ -341,8 +343,19 @@ st.markdown(
         }
     </style>
     <div class="footer"; style="display: flex; justify-content: center; font-family: Arial, sans-serif; font-size: 14px;">
-        &copy; Copyright 2025 Child Mental Health, Inc
+        &copy; Copyright 2025 Child Mental Health, India
     </div>
     """,
     unsafe_allow_html=True,
 )
+
+# -----------
+
+
+
+
+
+
+
+
+# ------------------

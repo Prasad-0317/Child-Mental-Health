@@ -24,13 +24,6 @@ with st.container():
     
     st.logo("logo - Copy.jpg", size="medium")
     # st.title("Child Mental Health ..")
-    # with open("index.html", "r", encoding="utf-8") as f:
-    #     html_content = f.read()
-
-
-    # st.components.v1.html(html_content, height=600, scrolling=True)
-    # st.markdown('</div>', unsafe_allow_html=True)
-
 
 
 # Sidebar Navigation
@@ -191,7 +184,7 @@ img {vertical-align: middle;}
 .slideshow-container {
   max-width: 1000px;
   position: relative;
-  margin-left: auto;
+  margin-left: 100px;
 
 }
 
@@ -282,7 +275,7 @@ img {vertical-align: middle;}
 </div>
 <br>
 
-<div style="text-align:center;margin-block-start: -10px;margin-left: -200px;">
+<div style="text-align:center;margin-block-start: -10px;margin-left: -100px;">
   <span class="dot"></span> 
   <span class="dot"></span> 
   <span class="dot"></span>
@@ -317,6 +310,198 @@ function showSlides() {
     """,
     height=600
 )
+
+# ---------------------------------
+
+import streamlit as st
+
+# Initialize chatbot visibility state
+if "chatbot_visible" not in st.session_state:
+    st.session_state.chatbot_visible = False
+
+# Chatbot HTML with proper positioning and no white background
+chatbot_html = f"""
+    <style>
+        /* Floating Chat Button */
+        .chatbot-button {{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+            z-index: 1000;
+        }}
+        .chatbot-button:hover {{
+            background: #0056b3;
+        }}
+
+        /* Chatbot Window (No White Background) */
+        .chatbot-container {{
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: transparent;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            z-index: 999;
+            display: {"block" if st.session_state.chatbot_visible else "none"};
+        }}
+
+        /* Ensure iframe takes full space */
+        .chatbot-container iframe {{
+            width: 100%;
+            height: 100%;
+            border: none;
+        }}
+    </style>
+
+    <!-- Chat Button -->
+    <button class="chatbot-button" onclick="toggleChatbot()">💬 Chat</button>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-container">
+        <iframe src="http://127.0.0.1:5500/index.html"></iframe>
+    </div>
+
+    <script>
+        function toggleChatbot() {{
+            var chatbot = document.querySelector('.chatbot-container');
+            chatbot.style.display = chatbot.style.display === "none" ? "block" : "none";
+        }}
+    </script>
+"""
+
+# Render chatbot in Streamlit
+st.components.v1.html(chatbot_html, height=600, scrolling=False)
+
+
+
+
+
+
+
+# -----------------
+
+# import streamlit as st
+
+# # Chatbot HTML with correct positioning and direct Dialogflow load
+# chatbot_html = f"""
+#     <style>
+#         /* Floating Chat Button */
+#         .chatbot-button {{
+#             position: fixed;
+#             bottom: 20px;
+#             right: 20px;
+#             background: #007BFF;
+#             color: white;
+#             border: none;
+#             padding: 12px 18px;
+#             border-radius: 50px;
+#             cursor: pointer;
+#             font-size: 16px;
+#             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+#             transition: background 0.3s;
+#             z-index: 1000;
+#         }}
+#         .chatbot-button:hover {{
+#             background: #0056b3;
+#         }}
+
+#         /* Chatbot Window */
+#         .chatbot-container {{
+#             position: fixed;
+#             bottom: 80px;
+#             right: 20px;
+#             width: 350px;
+#             height: 500px;
+#             border-radius: 10px;
+#             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+#             overflow: hidden;
+#             display: none;
+#             z-index: 999;
+#         }}
+
+#         /* Ensure iframe takes full space */
+#         .chatbot-container iframe {{
+#             width: 100%;
+#             height: 100%;
+#             border: none;
+#         }}
+#     </style>
+
+#     <!-- Chat Button -->
+#     <button class="chatbot-button" onclick="toggleChatbot()">💬 Chat</button>
+
+#     <!-- Chatbot Window (Loads Dialogflow Directly) -->
+#     <div id="chatbot-box" class="chatbot-container">
+#         <iframe src="https://console.dialogflow.com/api-client/demo/embedded/a21d644c-7b13-4be4-b8ba-f3880a95aa6e"></iframe>
+#     </div>
+
+#     <script>
+#         function toggleChatbot() {{
+#             var chatbotBox = document.getElementById('chatbot-box');
+#             chatbotBox.style.display = chatbotBox.style.display === "none" ? "block" : "none";
+#         }}
+#     </script>
+# """
+
+# # Render chatbot in Streamlit
+# st.components.v1.html(chatbot_html, height=600, scrolling=False)
+
+
+# ------------------------------  chatbot 2 --------------------------
+
+# import streamlit as st
+
+# # Load the chatbot interface
+# with open("index.html", "r", encoding="utf-8") as f:
+#     html_content = f.read()
+
+# st.components.v1.html(html_content, height=600, scrolling=True)
+
+# # Injecting CSS for Dialogflow Chatbot positioning
+# st.markdown(
+#     """
+#     <style>
+#         df-messenger {
+#             position: fixed;
+#             bottom: 20px;
+#             right: 20px;
+#             z-index: 9999;
+#             --df-messenger-bot-message: #007bff;
+#             --df-messenger-user-message: #6c757d;
+#             --df-messenger-input-box-color: #f1f1f1;
+#             --df-messenger-font-color: white;
+#             --df-messenger-input-font-color: black;
+#         }
+
+#         /* Ensure the floating button is correctly positioned */
+#         df-messenger::part(toggle-button) {
+#             position: fixed;
+#             bottom: 20px;
+#             right: 20px;
+#             background-color: #007bff !important;
+#             border-radius: 50%;
+#             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+#         }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
+
+
+
+
 
 
 

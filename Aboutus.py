@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Set up page configuration
-st.set_page_config(page_title="About Us - Child Mental Health", layout="wide",page_icon="❤️")
+st.set_page_config(page_title="About Us - Child Mental Health", layout="wide", page_icon="❤️")
 
 # Custom CSS for styling
 st.markdown(
@@ -10,45 +10,61 @@ st.markdown(
         /* General Page Styling */
         body {
             font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
         }
 
         /* Header Styling */
         .header-container {
             text-align: center;
-            padding: 20px 0;
-            background-color: #f5f5f5;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
         }
 
         .header-title {
-            font-size: 36px;
+            font-size: 48px;
             font-weight: bold;
-            color: #333;
+            color: #fff;
+            margin-bottom: 10px;
         }
 
         .header-subtitle {
-            font-size: 20px;
-            color: #555;
+            font-size: 24px;
+            color: #fff;
+            opacity: 0.9;
         }
 
         /* Mission, Vision, and Values Section */
         .section {
             padding: 40px 20px;
             margin: 20px 0;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .section-title {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             margin-bottom: 20px;
             color: #444;
+            text-align: center;
         }
 
         .section-content {
             font-size: 18px;
             color: #666;
             line-height: 1.8;
+            text-align: center;
         }
 
         /* Services Section */
@@ -61,9 +77,9 @@ st.markdown(
 
         .service-card {
             background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             text-align: center;
             width: 30%;
             min-width: 250px;
@@ -72,20 +88,21 @@ st.markdown(
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .service-icon {
-            font-size: 50px;
-            color: #007BFF;
-            margin-bottom: 10px;
+            font-size: 60px;
+            color: #2575fc;
+            margin-bottom: 20px;
         }
 
         .service-title {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             color: #333;
+            margin-bottom: 10px;
         }
 
         .service-description {
@@ -105,21 +122,32 @@ st.markdown(
             text-align: center;
             width: 30%;
             min-width: 250px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .team-photo {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .team-name {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: #333;
+            margin-bottom: 5px;
         }
 
         .team-role {
@@ -132,12 +160,12 @@ st.markdown(
         .footer {
             margin-top: 40px;
             padding: 20px;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             text-align: center;
-            font-size: 14px;
-            color: #777;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
         }
     </style>
     """,
@@ -199,23 +227,23 @@ st.markdown(
         <div class="services-container">
             <div class="service-card">
                 <div class="service-icon">🧠</div>
-                <div class="service-title">Counseling Sessions</div>
+                <div class="service-title">Chatbot</div>
                 <div class="service-description">
-                    Personalized sessions to address emotional and behavioral challenges.
+                    To solve Parent and Child queries.
                 </div>
             </div>
             <div class="service-card">
                 <div class="service-icon">📚</div>
-                <div class="service-title">Educational Workshops</div>
+                <div class="service-title">Personalized Feedback</div>
                 <div class="service-description">
-                    Workshops for children, parents, and educators on mental health awareness.
+                    To  monitor Mental Health.
                 </div>
             </div>
             <div class="service-card">
                 <div class="service-icon">🤝</div>
-                <div class="service-title">Support Groups</div>
+                <div class="service-title">Comparative Study</div>
                 <div class="service-description">
-                    Community-led support groups to share experiences and foster connection.
+                    To compare with other age groups.
                 </div>
             </div>
         </div>
@@ -231,19 +259,16 @@ st.markdown(
         <div class="section-title">Meet Our Team</div>
         <div class="team-container">
             <div class="team-member">
-                <img src="https://via.placeholder.com/100" class="team-photo" alt="Team Member">
                 <div class="team-name">Aryan Manghi</div>
-                <div class="team-role">BE CMPN VESIT</div>
+                <div class="team-role">STUDENT</div>
             </div>
             <div class="team-member">
-                <img src="https://via.placeholder.com/100" class="team-photo" alt="Team Member">
                 <div class="team-name">Prasad Chaudhari</div>
-                <div class="team-role">BE CMPN VESIT</div>
+                <div class="team-role">STUDENT</div>
             </div>
             <div class="team-member">
-                <img src="https://via.placeholder.com/100" class="team-photo" alt="Team Member">
                 <div class="team-name">Devyaansh Razdan</div>
-                <div class="team-role">BE CMPN VESIT</div>
+                <div class="team-role">STUDENT</div>
             </div>
         </div>
     </div>

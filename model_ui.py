@@ -134,44 +134,46 @@ st.write("#")
 def get_tips(depression_level):
     if depression_level == "Low":
         return """
-        Resources for Well-Being:
-        Apps: Moodpath, Woebot, Headspace, Calm (for mindfulness and mood tracking).  
-        Books: Feeling Good by Dr. David Burns, The Happiness Trap by Dr. Russ Harris.  
-        Online Tools: Mental Health America (MHA) screening tools, Mind.org.uk resources.  
+        ### 🌿 Resources for Well-Being:
+        **Apps:** 🧠 Moodpath, 🤖 Woebot, 🧘 Headspace, 🌊 Calm (for mindfulness and mood tracking).  
+        **Books:** 📚 *Feeling Good* by Dr. David Burns, *The Happiness Trap* by Dr. Russ Harris.  
+        **Online Tools:** 🌐 [Mental Health America (MHA) screening tools](https://screening.mhanational.org/), [Mind.org.uk resources](https://www.mind.org.uk/).  
 
-        Tips for Maintaining Good Mental Health:
-        - Self-Care: Prioritize sleep, nutrition, and hydration. Establish a daily routine.  
-        - Exercise: Engage in light physical activity like walking, yoga, or stretching (30 minutes/day).  
-        - Mindfulness: Practice meditation, deep breathing, or journaling to manage stress.  
-        - Social Connection: Stay connected with friends or family, even if it’s just a quick chat.  
-        - Hobbies: Engage in activities you enjoy, like reading, art, or gardening.  
+        ### 📝 Tips for Maintaining Good Mental Health:
+        - **Self-Care:** 💤 Prioritize sleep, 🥗 nutrition, and 💧 hydration. Establish a daily routine.  
+        - **Exercise:** 🚶‍♂️ Engage in light physical activity like walking, yoga, or stretching (30 minutes/day).  
+        - **Mindfulness:** 🧘 Practice meditation, deep breathing, or journaling to manage stress.  
+        - **Social Connection:** 👫 Stay connected with friends or family, even if it’s just a quick chat.  
+        - **Hobbies:** 🎨 Engage in activities you enjoy, like reading, art, or gardening.  
         """
     elif depression_level == "Moderate":
         return """
-        Resources for Coping:
-        Apps: Sanvello, Happify, BetterHelp (for stress management and therapy).  
-        Books: The Mindful Way Through Depression by Mark Williams, Atomic Habits by James Clear.  
-        Online Tools: Verywell Mind - Coping Strategies.  
+        ### 🌟 Resources for Coping:
+        **Apps:** 📲 Sanvello, Happify, BetterHelp (for stress management and therapy).  
+        **Books:** 📖 *The Mindful Way Through Depression* by Mark Williams, *Atomic Habits* by James Clear.  
+        **Online Tools:** 🌐 [Verywell Mind - Coping Strategies](https://www.verywellmind.com/student-resources-overview-4581768).  
 
-        Coping Strategies:
-        - Structured Routine: Stick to a daily plan to bring stability.  
-        - Physical Health: Engage in moderate exercise, eat healthy, and hydrate.  
-        - Emotional Check-ins: Keep a journal and reflect on emotions.  
-        - Limit Social Media: Reduce negative online exposure and focus on uplifting content.  
+        ### 💡 Coping Strategies:
+        - **Structured Routine:** ⏰ Stick to a daily plan to bring stability.  
+        - **Physical Health:** 🏃 Engage in moderate exercise, eat healthy, and hydrate.  
+        - **Emotional Check-ins:** 📝 Keep a journal and reflect on emotions.  
+        - **Limit Social Media:** 🚫 Reduce negative online exposure and focus on uplifting content.  
         """
+
     elif depression_level == "High":
         return """
-        Seeking Professional Help:
-        Apps: Talkspace, BetterHelp, 7 Cups (for online therapy and emotional support).  
-        Books: Lost Connections by Johann Hari, The Depression Cure by Stephen Ilardi.  
-        Helplines: Find a Therapist - Psychology Today, NIMH - Find Help.  
+        ### 🚨 Seeking Professional Help:
+        **Apps:** 📱 Talkspace, BetterHelp, 7 Cups (for online therapy and emotional support).  
+        **Books:** 📚 *Lost Connections* by Johann Hari, *The Depression Cure* by Stephen Ilardi.  
+        **Helplines:** 📞 [Find a Therapist - Psychology Today](https://www.psychologytoday.com/us/therapists), [NIMH - Find Help](https://www.nimh.nih.gov/health/find-help).  
 
-        What You Can Do:
-        - Reach Out: Talk to a trusted friend, family member, or counselor.  
-        - Seek Therapy: Professional help can guide you towards recovery.  
-        - Medical Advice: Consult a doctor if symptoms persist or worsen.  
-        - Crisis Support: If you have severe distress, seek emergency help or a hotline service.  
+        ### 🆘 What You Can Do:
+        - **Reach Out:** 💬 Talk to a trusted friend, family member, or counselor.  
+        - **Seek Therapy:** 🎗 Professional help can guide you towards recovery.  
+        - **Medical Advice:** 🏥 Consult a doctor if symptoms persist or worsen.  
+        - **Crisis Support:** 🚨 If you have severe distress, seek emergency help or a hotline service.  
         """
+
 
 # Function to generate PDF
 def generate_pdf(depression_level, tips_content, recommended_screen_time, child_screen_time, graph_image, user_inputs):

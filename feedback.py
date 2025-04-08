@@ -4,6 +4,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 import datetime
 import pathlib
 
+# Configure page settings
+st.set_page_config(page_title="Feedback Page..", layout="wide", page_icon="😇")
 
 # Function to load CSS from the 'assets' folder
 def load_css(file_path):

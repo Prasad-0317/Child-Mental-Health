@@ -1,7 +1,7 @@
-# Social Media Impact on Mental Health Analysis 
+# Social Media Impact on Mental Health Analysis 🌟
 
 ## Overview
-This project examines how social media usage affects mental health using machine learning. Our Streamlit web application provides predictive models, interactive dashboards, and mental wellness resources.
+This project examines how social media usage affects mental health using machine learning. Our Streamlit web application provides predictive models, interactive dashboards, mental wellness resources/ personalized recommendations, fun activities for childrens.
 
 ## Features
 - **Home Page** 🏠 : Project introduction and navigation
